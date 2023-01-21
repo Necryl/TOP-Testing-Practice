@@ -6,4 +6,11 @@ function capitalize(text) {
   return text[0].toUpperCase() + text.slice(1);
 }
 
-module.exports = { capitalize };
+function reverseString(text) {
+  return [...text].reduce((final, current) => {
+    final = current + final;
+    return final;
+  }, "");
+}
+
+module.exports = { capitalize, reverseString };
