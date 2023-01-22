@@ -1,4 +1,10 @@
-import { capitalize, reverseString, calculator, caesarCipher } from "./../main";
+import {
+  capitalize,
+  reverseString,
+  calculator,
+  caesarCipher,
+  analyzeArray,
+} from "./../main";
 
 test("capitalize, capitalize the first char of a given string", () => {
   expect(capitalize("abcd")).toBe("Abcd");
@@ -28,4 +34,19 @@ test("caesarCipher is a function that takes a string and returns it with each ch
   expect(caesarCipher("AbcD", 3)).toBe("DefG");
   expect(caesarCipher("z", 1)).toBe("a");
   expect(caesarCipher("a", -1)).toBe("z");
+});
+
+test("analyzeArray is a function that takes an array of numbers and returns an object with the following properties: average, min, max, and length", () => {
+  expect(analyzeArray([1, 2, 3, 4, 5, 6, 7])).toStrictEqual({
+    average: 4,
+    min: 1,
+    max: 7,
+    length: 7,
+  });
+  expect(analyzeArray([1, 2, 9, 4, 11, 6, 7])).toStrictEqual({
+    average: 5.71,
+    min: 1,
+    max: 11,
+    length: 7,
+  });
 });

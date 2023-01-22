@@ -53,4 +53,47 @@ function caesarCipher(text, offset) {
   return result;
 }
 
-module.exports = { capitalize, reverseString, calculator, caesarCipher };
+function analyzeArray(numArray) {
+  const { length } = numArray;
+  const { min, max, average } = numArray.reduce((final, current, index) => {
+    /* eslint-disable no-shadow */
+    let min;
+    let max;
+    let sum;
+    if (index === 1) {
+      min = final < current ? final : current;
+      max = final > current ? final : current;
+      sum = final + current;
+    } else {
+      min = final.min < current ? final.min : current;
+      max = final.max > current ? final.max : current;
+      sum = final.sum + current;
+    }
+    final = { min, max, sum };
+    if (index === length - 1) {
+      const average = Number((sum / length).toFixed(2));
+      return {
+        min,
+        max,
+        average,
+      };
+    }
+    return final;
+    /* eslint-enable no-shadow */
+  });
+
+  return {
+    average,
+    min,
+    max,
+    length,
+  };
+}
+
+module.exports = {
+  capitalize,
+  reverseString,
+  calculator,
+  caesarCipher,
+  analyzeArray,
+};
