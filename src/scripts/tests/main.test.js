@@ -1,4 +1,4 @@
-import { capitalize, reverseString, calculator } from "./../main";
+import { capitalize, reverseString, calculator, caesarCipher } from "./../main";
 
 test("capitalize, capitalize the first char of a given string", () => {
   expect(capitalize("abcd")).toBe("Abcd");
@@ -19,4 +19,13 @@ test("'calculator' is an object that contains functions for the basic operations
   expect(calculator.divide(16, 4)).toBe(4);
   expect(calculator.multiply(4, 8)).toBe(32);
   expect(calculator.multiply(9, 3)).toBe(27);
+});
+
+test("caesarCipher is a function that takes a string and returns it with each character 'shifted'", () => {
+  expect(caesarCipher("abcd", 1)).toBe("bcde");
+  expect(caesarCipher("AbcD", 1)).toBe("BcdE");
+  expect(caesarCipher("Ab, cD!", 1)).toBe("Bc, dE!");
+  expect(caesarCipher("AbcD", 3)).toBe("DefG");
+  expect(caesarCipher("z", 1)).toBe("a");
+  expect(caesarCipher("a", -1)).toBe("z");
 });
